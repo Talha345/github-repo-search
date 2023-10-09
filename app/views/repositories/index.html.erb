@@ -1,0 +1,29 @@
+<style>
+  .button-group {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+</style>
+
+<h1>Github Repository Search</h1>
+<div class="button-group">
+  <%= form_tag(root_path, method: 'get') do %>
+    <%= text_field_tag :search_term, params[:search_term] %>
+    <%= submit_tag 'Search' %>
+  <% end %>
+  <%= button_to "Reset", root_path, method: 'get' %>
+</div>
+
+<% if @repositories.present? %>
+  <h2>Search Results:</h2>
+  <ul>
+    <% @repositories.each do |repository| %>
+      <li>
+        <strong><%= link_to repository['full_name'], repository['html_url'], target: "_blank" %></strong><br>
+        Description: <%= repository['description'] %><br>
+        Stars: <%= repository['stargazers_count'] %><br>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
