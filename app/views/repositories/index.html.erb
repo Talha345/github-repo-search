@@ -1,9 +1,9 @@
 <style>
-  .button-group {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-  }
+    .button-group {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
 </style>
 
 <h1>Github Repository Search</h1>
@@ -26,4 +26,5 @@
       </li>
     <% end %>
   </ul>
+  <%= render inline: pagy_nav(@pagy) %>
 <% end %>
